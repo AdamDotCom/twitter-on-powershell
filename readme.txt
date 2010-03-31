@@ -22,10 +22,10 @@ Sample usage:
 
 Screenshots:
 
-  Tweeting: http://github.com/AdamDotCom/memcached-on-powershell/blob/master/twitter-on-powershell-screenshot1.png
+  Tweeting: http://github.com/AdamDotCom/twitter-on-powershell/blob/master/twitter-on-powershell-screenshot1.png
   
-  Viewing friends: http://github.com/AdamDotCom/memcached-on-powershell/blob/master/twitter-on-powershell-screenshot2.png
+  Viewing friends: http://github.com/AdamDotCom/twitter-on-powershell/blob/master/twitter-on-powershell-screenshot2.png
   
-  Twitter failure (the fail whale): http://github.com/AdamDotCom/memcached-on-powershell/blob/master/twitter-on-powershell-screenshot3.png
+  Twitter failure (the fail whale): http://github.com/AdamDotCom/twitter-on-powershell/blob/master/twitter-on-powershell-screenshot3.png
 
 Adam Kahtava - http://adam.kahtava.com/ - MIT Licensed
