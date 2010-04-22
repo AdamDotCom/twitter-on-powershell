@@ -92,8 +92,17 @@ function global:Twitter-Sign-on(){
         $global:twitter_username = Read-Host "Please enter your username"
     }
     if(!$global:twitter_password){
-        $global:twitter_password = Read-Host "Please enter your password"
+		$password = read-host -assecurestring "Please enter your password"
+		$global:twitter_password = Get-EncryptedText $password
     }
+}
+
+function global:Get-EncryptedText($text) 
+{
+    $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToGlobalAllocUnicode($text)
+    $result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
+    $result
 }
 
 function global:Twitter-Sign-out(){
@@ -101,7 +110,7 @@ function global:Twitter-Sign-out(){
 }
 
 function global:Get-Tweets([string] $username, [string] $password){
-    $url = 'http://twitter.com/statuses/friends_timeline.xml?count={0}' -f 80
+    $url = 'http://twitter.com/statuses/friends_timeline.xml?count={0}' -f 40
     
     [xml] $results = Web-Get $url
     
