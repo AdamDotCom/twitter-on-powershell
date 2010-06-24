@@ -50,9 +50,9 @@ function global:Replies(){
 
 # Search twitter (free text)
 function global:Search-Twitter([string] $search_query){
-  $url = 'http://search.twitter.com/search.atom?q={0}&rpp={1}' -f $search_query, 80
+    $url = 'http://search.twitter.com/search.atom?q={0}&rpp={1}' -f $search_query, 80
     
-  [xml] $results = Web-Get $url
+    [xml] $results = Web-Get $url
   
     $results.feed.entry | % { 
         write-host $_.author.name '- ' -nonewline -f DarkGreen
