@@ -50,10 +50,10 @@ function global:Replies(){
 
 # Search twitter (free text)
 function global:Search-Twitter([string] $search_query){
-	$url = 'http://search.twitter.com/search.atom?q={0}&rpp={1}' -f $search_query, 80
+  $url = 'http://search.twitter.com/search.atom?q={0}&rpp={1}' -f $search_query, 80
     
-	[xml] $results = Web-Get $url
-	
+  [xml] $results = Web-Get $url
+  
     $results.feed.entry | % { 
         write-host $_.author.name '- ' -nonewline -f DarkGreen
         write-host $_.title -f DarkGray
@@ -92,16 +92,16 @@ function global:Twitter-Sign-on(){
         $global:twitter_username = Read-Host "Please enter your username"
     }
     if(!$global:twitter_password){
-		$password = read-host -assecurestring "Please enter your password"
-		$global:twitter_password = Get-EncryptedText $password
+        $password = read-host -assecurestring "Please enter your password"
+        $global:twitter_password = Get-EncryptedText $password
     }
 }
 
 function global:Get-EncryptedText($text) 
 {
-    $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToGlobalAllocUnicode($text)
-    $result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
-    [System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
+    $ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToGlobalAllocUnicode($text)
+    $result = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($ptr)
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($ptr)
     $result
 }
 
@@ -110,7 +110,7 @@ function global:Twitter-Sign-out(){
 }
 
 function global:Get-Tweets([string] $username, [string] $password){
-    $url = 'http://twitter.com/statuses/friends_timeline.xml?count={0}' -f 40
+    $url = 'http://twitter.com/statuses/friends_timeline.xml?count={0}' -f 80
     
     [xml] $results = Web-Get $url
     
